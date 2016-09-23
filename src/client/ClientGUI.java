@@ -46,7 +46,7 @@ public class ClientGUI implements Observer
 	
 	private boolean				newSession;
 	private Socket				socket;
-	private String 				userName;
+	private String 				userName, ip;
 	private ObjectOutputStream 	oos;
 	private InputListener		inputListener;
 	
@@ -272,7 +272,8 @@ public class ClientGUI implements Observer
 	{
 		try
 		{
-			socket = new Socket("localhost",5555);
+			ip = JOptionPane.showInputDialog("Enter IP Address");
+			socket = new Socket("ip",5555);
 			// if i didn't disconnect, i want to keep my username
 			if(newSession)
 			{
