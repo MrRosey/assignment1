@@ -273,7 +273,8 @@ public class ClientGUI implements Observer
 		try
 		{
 			ip = JOptionPane.showInputDialog("Enter IP Address");
-			socket = new Socket("ip",5555);
+			socket = new Socket(ip,5555);
+			
 			// if i didn't disconnect, i want to keep my username
 			if(newSession)
 			{
