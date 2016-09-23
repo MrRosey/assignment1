@@ -45,7 +45,7 @@ public class ClientGUI implements Observer
 	JTextArea 	textDisplay, textSend;
 	
 	private boolean				newSession;
-	
+	//Test
 	private Socket				socket;
 	private String 				userName;
 	private ObjectOutputStream 	oos;
