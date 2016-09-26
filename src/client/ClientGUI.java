@@ -163,6 +163,8 @@ public class ClientGUI implements Observer
 		});
 		
 		textDisplay = new JTextArea();
+		textDisplay.setWrapStyleWord(true);
+		textDisplay.setLineWrap(true);
 		JScrollPane sp = new JScrollPane(textDisplay);
 		sp.setSize(405, 310);
 		sp.setLocation(12, 79);
@@ -194,6 +196,8 @@ public class ClientGUI implements Observer
 		chatPanel.add(btnDisconnect);
 		
 		textSend = new JTextArea();
+		textSend.setWrapStyleWord(true);
+		textSend.setLineWrap(true);
 		textSend.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
@@ -208,7 +212,7 @@ public class ClientGUI implements Observer
 					try
 					{
 						oos.writeObject(message);
-						textDisplay.append("Me: "+message.getMessage()+" ("+message.getTimeStamp()+")\n");
+						textDisplay.append("Me: "+message.getMessage()+" \n\t\t("+message.getTimeStamp()+")\n");
 						textSend.setText("");
 					}
 					catch (IOException e1)
@@ -224,7 +228,10 @@ public class ClientGUI implements Observer
 			}
 		});
 		textSend.setBounds(12, 402, 296, 26);
-		chatPanel.add(textSend);
+		JScrollPane spText = new JScrollPane(textSend);
+		spText.setLocation(12, 403);
+		spText.setSize(303, 25);
+		chatPanel.add(spText);
 		
 		btnSend = new JButton("Send");
 		btnSend.addMouseListener(new MouseAdapter() {
@@ -236,7 +243,7 @@ public class ClientGUI implements Observer
 				try
 				{
 					oos.writeObject(message);
-					textDisplay.append("Me: "+message.getMessage()+" ("+message.getTimeStamp()+")\n");
+					textDisplay.append("Me: "+message.getMessage()+" \n\t\t("+message.getTimeStamp()+")\n");
 					textSend.setText("");
 				}
 				catch (IOException e1)
