@@ -94,55 +94,55 @@ public class ClientGUI implements Observer
 		frmTictactoe.getContentPane().add(gamePanel);
 		gamePanel.setLayout(null);
 		
-		button = new JButton("X");
+		button = new JButton("");
 		button.setBounds(75, 77, 89, 89);
 		button.setForeground(Color.RED);
 		button.setFont(new Font("Tahoma", Font.PLAIN, 96));
 		gamePanel.add(button);
 		
-		button_1 = new JButton("X");
+		button_1 = new JButton("");
 		button_1.setForeground(Color.RED);
 		button_1.setFont(new Font("Tahoma", Font.PLAIN, 96));
 		button_1.setBounds(176, 77, 89, 89);
 		gamePanel.add(button_1);
 		
-		button_2 = new JButton("X");
+		button_2 = new JButton("");
 		button_2.setForeground(Color.RED);
 		button_2.setFont(new Font("Tahoma", Font.PLAIN, 96));
 		button_2.setBounds(277, 77, 89, 89);
 		gamePanel.add(button_2);
 		
-		button_3 = new JButton("X");
+		button_3 = new JButton("");
 		button_3.setForeground(Color.RED);
 		button_3.setFont(new Font("Tahoma", Font.PLAIN, 96));
 		button_3.setBounds(277, 179, 89, 89);
 		gamePanel.add(button_3);
 		
-		button_4 = new JButton("X");
+		button_4 = new JButton("");
 		button_4.setForeground(Color.RED);
 		button_4.setFont(new Font("Tahoma", Font.PLAIN, 96));
 		button_4.setBounds(176, 179, 89, 89);
 		gamePanel.add(button_4);
 		
-		button_5 = new JButton("X");
+		button_5 = new JButton("");
 		button_5.setForeground(Color.RED);
 		button_5.setFont(new Font("Tahoma", Font.PLAIN, 96));
 		button_5.setBounds(75, 179, 89, 89);
 		gamePanel.add(button_5);
 		
-		button_6 = new JButton("X");
+		button_6 = new JButton("");
 		button_6.setForeground(Color.RED);
 		button_6.setFont(new Font("Tahoma", Font.PLAIN, 96));
 		button_6.setBounds(75, 281, 89, 89);
 		gamePanel.add(button_6);
 		
-		button_7 = new JButton("X");
+		button_7 = new JButton("");
 		button_7.setForeground(Color.RED);
 		button_7.setFont(new Font("Tahoma", Font.PLAIN, 96));
 		button_7.setBounds(176, 281, 89, 89);
 		gamePanel.add(button_7);
 		
-		button_8 = new JButton("X");
+		button_8 = new JButton("");
 		button_8.setForeground(Color.RED);
 		button_8.setFont(new Font("Tahoma", Font.PLAIN, 96));
 		button_8.setBounds(277, 281, 89, 89);
