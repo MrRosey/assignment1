@@ -35,6 +35,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import javax.swing.JScrollPane;
+import javax.swing.JScrollBar;
 
 public class ClientGUI implements Observer
 {
@@ -51,7 +53,7 @@ public class ClientGUI implements Observer
 	private InputListener		inputListener;
 	
 	
-	private JFrame frame;
+	private JFrame frmTictactoe;
 
 	/**
 	 * Launch the application.
@@ -61,7 +63,7 @@ public class ClientGUI implements Observer
 			public void run() {
 				try {
 					ClientGUI window = new ClientGUI();
-					window.frame.setVisible(true);
+					window.frmTictactoe.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -81,13 +83,15 @@ public class ClientGUI implements Observer
 	 */
 	private void initialize() 
 	{
-		frame = new JFrame();
-		frame.setBounds(100, 100, 877, 524);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.X_AXIS));
+		frmTictactoe = new JFrame();
+		frmTictactoe.setResizable(false);
+		frmTictactoe.setTitle("Tic-Tac-Toe");
+		frmTictactoe.setBounds(100, 100, 877, 524);
+		frmTictactoe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmTictactoe.getContentPane().setLayout(new BoxLayout(frmTictactoe.getContentPane(), BoxLayout.X_AXIS));
 		
 		JPanel gamePanel = new JPanel();
-		frame.getContentPane().add(gamePanel);
+		frmTictactoe.getContentPane().add(gamePanel);
 		gamePanel.setLayout(null);
 		
 		button = new JButton("X");
@@ -145,13 +149,8 @@ public class ClientGUI implements Observer
 		gamePanel.add(button_8);
 		
 		JPanel chatPanel = new JPanel();
-		frame.getContentPane().add(chatPanel);
+		frmTictactoe.getContentPane().add(chatPanel);
 		chatPanel.setLayout(null);
-		
-		textDisplay = new JTextArea();
-		textDisplay.setEditable(false);
-		textDisplay.setBounds(12, 77, 405, 293);
-		chatPanel.add(textDisplay);
 		
 		btnConnect = new JButton("Connect");
 		btnConnect.addMouseListener(new MouseAdapter() {
@@ -162,6 +161,14 @@ public class ClientGUI implements Observer
 				connectMe();
 			}
 		});
+		
+		textDisplay = new JTextArea();
+		JScrollPane sp = new JScrollPane(textDisplay);
+		sp.setSize(405, 310);
+		sp.setLocation(12, 79);
+		textDisplay.setEditable(false);
+		textDisplay.setBounds(12, 77, 405, 293);
+		chatPanel.add(sp);
 		btnConnect.setBounds(12, 441, 97, 25);
 		chatPanel.add(btnConnect);
 		
@@ -183,7 +190,7 @@ public class ClientGUI implements Observer
 				disconnectMe();
 			}
 		});
-		btnDisconnect.setBounds(121, 441, 97, 25);
+		btnDisconnect.setBounds(121, 441, 110, 25);
 		chatPanel.add(btnDisconnect);
 		
 		textSend = new JTextArea();
