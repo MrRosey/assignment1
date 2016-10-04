@@ -181,6 +181,7 @@ public class ClientGUI implements Observer
 		chatPanel.add(btnConnect);
 		
 		btnDisconnect = new JButton("Disconnect");
+		btnDisconnect.setEnabled(false);
 		btnDisconnect.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) 
@@ -195,13 +196,18 @@ public class ClientGUI implements Observer
 				{
 					e1.printStackTrace();
 				}
-				disconnectMe();
+				
+				if(btnDisconnect.isEnabled())
+				{
+					disconnectMe();
+				}
 			}
 		});
 		btnDisconnect.setBounds(121, 441, 110, 25);
 		chatPanel.add(btnDisconnect);
 		
 		textSend = new JTextArea();
+		textSend.setEnabled(false);
 		textSend.setWrapStyleWord(true);
 		textSend.setLineWrap(true);
 		textSend.addKeyListener(new KeyAdapter() {
@@ -239,6 +245,7 @@ public class ClientGUI implements Observer
 		chatPanel.add(spText);
 		
 		btnSend = new JButton("Send");
+		btnSend.setEnabled(false);
 		btnSend.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -300,6 +307,9 @@ public class ClientGUI implements Observer
 				userName = JOptionPane.showInputDialog("Enter user name");
 			}
 			btnConnect.setEnabled(false);
+			btnSend.setEnabled(true);
+			btnDisconnect.setEnabled(true);
+			textSend.setEnabled(true);
 			
 			oos = new ObjectOutputStream(socket.getOutputStream());
 			textDisplay.append("Connected! Waiting for a chat partner...\n");
@@ -330,6 +340,8 @@ public class ClientGUI implements Observer
 		btnDisconnect.setEnabled(false);
 		btnSend.setEnabled(false);
 		btnConnect.setEnabled(true);
+		textSend.setEnabled(false);
+		
 		try
 		{
 			oos.close();
