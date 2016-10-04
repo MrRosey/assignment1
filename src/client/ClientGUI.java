@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.SwingConstants;
+import javax.swing.text.DefaultCaret;
 
 import utilities.InputListener;
 import utilities.Message;
@@ -74,7 +75,8 @@ public class ClientGUI implements Observer
 	/**
 	 * Create the application.
 	 */
-	public ClientGUI() {
+	public ClientGUI() 
+	{
 		initialize();
 	}
 
@@ -124,7 +126,7 @@ public class ClientGUI implements Observer
 		button_4.setBounds(176, 179, 89, 89);
 		gamePanel.add(button_4);
 		
-		button_5 = new JButton("X");
+		button_5 = new JButton("");
 		button_5.setForeground(Color.RED);
 		button_5.setFont(new Font("Tahoma", Font.PLAIN, 96));
 		button_5.setBounds(75, 179, 89, 89);
@@ -165,6 +167,10 @@ public class ClientGUI implements Observer
 		textDisplay = new JTextArea();
 		textDisplay.setWrapStyleWord(true);
 		textDisplay.setLineWrap(true);
+		
+		DefaultCaret caret = (DefaultCaret)textDisplay.getCaret();
+		caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
+		
 		JScrollPane sp = new JScrollPane(textDisplay);
 		sp.setSize(405, 310);
 		sp.setLocation(12, 79);
@@ -212,8 +218,7 @@ public class ClientGUI implements Observer
 					try
 					{
 						oos.writeObject(message);
-						textDisplay.append("Me: "+message.getMessage()+" \n\t\t("+message.getTimeStamp()+")\n");
-						textSend.setText("");
+						textDisplay.append("Me: "+message.getMessage()+"\n");
 					}
 					catch (IOException e1)
 					{
@@ -243,7 +248,7 @@ public class ClientGUI implements Observer
 				try
 				{
 					oos.writeObject(message);
-					textDisplay.append("Me: "+message.getMessage()+" \n\t\t("+message.getTimeStamp()+")\n");
+					textDisplay.append("Me: "+message.getMessage()+"\n");
 					textSend.setText("");
 				}
 				catch (IOException e1)
@@ -261,7 +266,7 @@ public class ClientGUI implements Observer
 	public void update(Observable observable, Object arg)
 	{
 		Message message = (Message)arg;		
-		String msg = message.getUser()+": "+message.getMessage()+" ("+message.getTimeStamp()+")";
+		String msg = message.getUser()+": "+message.getMessage();
 		textDisplay.append(msg+"\n");
 		
 		// connected to another person
@@ -303,6 +308,7 @@ public class ClientGUI implements Observer
 			inputListener = new InputListener(socket,ClientGUI.this);
 			Thread t1 = new Thread(inputListener);
 			t1.start();
+			
 		}
 		catch (HeadlessException e1)
 		{
@@ -334,5 +340,14 @@ public class ClientGUI implements Observer
 		{
 			e1.printStackTrace();
 		}
+		
+	}
+	
+	public void wipeText()
+	{
+//		if(textSend.getText().equalsIgnoreCase("") || textSend.getText().equals(null) || textSend.getText().equalsIgnoreCase("\n"))
+//		{
+			textSend.setText("Hello");
+//		}
 	}
 }

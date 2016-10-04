@@ -1,6 +1,9 @@
 package serverSide;
 
 import java.util.*;
+
+import client.ClientGUI;
+
 import java.net.*;
 import java.io.*;
 import utilities.*;
@@ -83,7 +86,7 @@ public class ClientHandler implements Runnable, Observer
 	{
 		InputListener listener = (InputListener)observable;
 		Message message = (Message)arg;
-		
+
 		try
 		{
 			if(listener.getListenerNumber() == 1)
