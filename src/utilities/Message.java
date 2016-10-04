@@ -12,7 +12,6 @@ public class Message implements Serializable
 	//Attributes
 	private String 				user;
 	private String				message;
-	private Date				timeStamp;
 	
 	//Constructors
 	/**
@@ -25,7 +24,6 @@ public class Message implements Serializable
 	{
 		this.user = user;
 		this.message = message;
-		this.timeStamp = timeStamp;
 	}
 	
 	//Getter and Setter Methods
@@ -61,22 +59,6 @@ public class Message implements Serializable
 		this.message = message;
 	}
 
-	/**
-	 * @return the timeStamp
-	 */
-	public Date getTimeStamp()
-	{
-		return timeStamp;
-	}
-
-	/**
-	 * @param timeStamp the timeStamp to set
-	 */
-	public void setTimeStamp(Date timeStamp)
-	{
-		this.timeStamp = timeStamp;
-	}
-
 	//Operational Methods
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
@@ -84,7 +66,7 @@ public class Message implements Serializable
 	@Override
 	public String toString()
 	{
-		return "Message [message=" + message + ", timeStamp=" + timeStamp + ", user="
+		return "Message [message=" + message + ", user="
 				+ user + "]";
 	}
 }
